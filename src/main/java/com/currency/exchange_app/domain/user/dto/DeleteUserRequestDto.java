@@ -4,15 +4,11 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 
 @Getter
-public class UserRequestDto {
+public class DeleteUserRequestDto {
     @NotBlank
     private final String email;//사용자 이메일
 
-    @NotBlank
-    private final String name;//사용자 이름
-
-    public UserRequestDto(String email, String name) {
+    public DeleteUserRequestDto(String email) {
         this.email = email;
-        this.name = name;
     }
 }
