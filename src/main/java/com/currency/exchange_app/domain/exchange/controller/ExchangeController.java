@@ -51,7 +51,7 @@ public class ExchangeController {
         return  new ResponseEntity<>(exchangeResponseDtoList, HttpStatus.OK);
     }
     
-    //통화 교환 상태 수정
+    //환전 요청 상태 수정
     @PatchMapping("/exchanges/{id}")
     public ResponseEntity<ExchangeResponseDto> updateExchange(Long exchangeId , @Valid @RequestBody UpdateExchangeRequestDto updateExchangeRequestDto) {
 

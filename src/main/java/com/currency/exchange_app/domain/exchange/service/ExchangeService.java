@@ -60,20 +60,10 @@ public class ExchangeService {
 
 
     //환전 요청 상태 수정 (환전 요청 취소)
-//    @Transactional
     public ExchangeResponseDto updateExchangeById(Long exchangeId) {
 
         //환전 요청 id 조회
         Exchange updateExchange = exchangeRepository.findByExchangeIdOrElseThrow(exchangeId);
-
-        //상태 NORMAL -> CANCELLED 수정
-//        exchange.updateExchange(ExchangeStatus.CANCELLED);
-//
-//        //수정된 상태 저장
-//        Exchange saveExchange = exchangeRepository.save(exchange);
-//
-//        //Dto 반환
-//        return ExchangeResponseDto.toDto(saveExchange);
 
         // 상태 변경: NORMAL -> CANCELLED
         if (updateExchange.getExchangeStatus().equals(ExchangeStatus.NORMAL)) {

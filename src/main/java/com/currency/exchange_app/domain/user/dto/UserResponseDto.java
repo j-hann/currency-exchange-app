@@ -15,8 +15,6 @@ public class UserResponseDto {
 
     private final String name;//사용자 이름
 
-//    private List<Exchange> ExchangeList;//환전 요청 리스트
-
     private final LocalDateTime createdAt;//생성일
 
     private final LocalDateTime modifiedAt;//수정일
