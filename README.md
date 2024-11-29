@@ -40,6 +40,8 @@
 ## ⚙️ ERD
 <details>
 <summary>ERD</summary>
+  
+![image](https://github.com/user-attachments/assets/05804012-91c1-437a-a2d7-8649814103d6)
 
 </details>
   
@@ -47,7 +49,19 @@
 ## 📑 API 명세서
 <details>
 <summary>API 명세서</summary>
-  
+
+#### user
+![image](https://github.com/user-attachments/assets/c501d6cc-8081-4695-968d-814ad3f4b56a)
+
+
+#### exchange
+![image](https://github.com/user-attachments/assets/cff34f1e-31c1-47f7-8072-b7bb36a96884)
+
+
+#### currency
+![image](https://github.com/user-attachments/assets/53d24699-8153-42b8-8693-fe7544276e5c)
+
+
 </details>
 
 ## 🌟 실행 화면
