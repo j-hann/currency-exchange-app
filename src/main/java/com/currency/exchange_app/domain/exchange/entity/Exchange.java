@@ -27,7 +27,7 @@ import java.math.BigDecimal;
 public class Exchange extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;//화폐 id
+    private Long id;//환전 요청 id
 
     @Column(name = "amount_before_exchange")
     private BigDecimal amountBeforeExchange;//환전 전 금액
@@ -65,6 +65,11 @@ public class Exchange extends BaseEntity {
         this.user = user;
         this.currency = currency;
         this.amountAfterExchange = amountAfterExchange;
+        this.exchangeStatus = exchangeStatus;
+    }
+
+    //환전 요청 상태 변경
+    public void updateExchange(ExchangeStatus exchangeStatus) {
         this.exchangeStatus = exchangeStatus;
     }
 }
