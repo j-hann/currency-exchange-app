@@ -38,7 +38,7 @@ public class UserController {
 
         return new ResponseEntity<>(userResponseDto, HttpStatus.CREATED);
     }
-    
+
     //사용자 삭제
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> userDelete(@PathVariable Long id,
