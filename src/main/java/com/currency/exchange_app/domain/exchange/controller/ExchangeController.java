@@ -52,10 +52,13 @@ public class ExchangeController {
     }
     
     //환전 요청 상태 수정
-    @PatchMapping("/exchanges/{id}")
-    public ResponseEntity<ExchangeResponseDto> updateExchange(Long exchangeId , @Valid @RequestBody UpdateExchangeRequestDto updateExchangeRequestDto) {
+    @PatchMapping("/exchanges/{exchangeId}")
+    public ResponseEntity<ExchangeResponseDto> updateExchange( @PathVariable Long exchangeId , @Valid @RequestBody UpdateExchangeRequestDto requestDto) {
 
-        ExchangeResponseDto exchangeResponseDto = exchangeService.updateExchangeById(exchangeId);
+        ExchangeResponseDto exchangeResponseDto = exchangeService.updateExchange(
+                exchangeId,
+                requestDto.getExchangeStatus()
+        );
 
         return new ResponseEntity<>(exchangeResponseDto, HttpStatus.OK);
     }

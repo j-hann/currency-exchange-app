@@ -8,6 +8,8 @@ import com.currency.exchange_app.domain.exchange.entity.Exchange;
 import com.currency.exchange_app.domain.exchange.repository.ExchangeRepository;
 import com.currency.exchange_app.domain.user.entity.User;
 import com.currency.exchange_app.domain.user.repository.UserRepository;
+import com.currency.exchange_app.global.exception.ExceptionType;
+import com.currency.exchange_app.global.exception.NotFoundByIdException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -60,7 +62,12 @@ public class ExchangeService {
 
 
     //환전 요청 상태 수정 (환전 요청 취소)
-    public ExchangeResponseDto updateExchangeById(Long exchangeId) {
+    public ExchangeResponseDto updateExchange(Long exchangeId, ExchangeStatus exchangeStatus) {
+
+        //환전 요청 id null값 확인
+        if (exchangeId == null) {
+            throw new NotFoundByIdException(ExceptionType.EXCHANGE_NOT_FOUND);
+        }
 
         //환전 요청 id 조회
         Exchange updateExchange = exchangeRepository.findByExchangeIdOrElseThrow(exchangeId);
@@ -68,6 +75,7 @@ public class ExchangeService {
         // 상태 변경: NORMAL -> CANCELLED
         if (updateExchange.getExchangeStatus().equals(ExchangeStatus.NORMAL)) {
             updateExchange.updateExchange(ExchangeStatus.CANCELLED);
+            exchangeRepository.save(updateExchange);
         }
 
         return ExchangeResponseDto.toDto(updateExchange);

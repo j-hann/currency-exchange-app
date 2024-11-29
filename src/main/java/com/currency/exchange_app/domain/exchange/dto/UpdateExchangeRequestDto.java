@@ -9,13 +9,9 @@ import lombok.Getter;
 public class UpdateExchangeRequestDto {
 
     @NotNull
-    private Long exchangeId;//환전 요청 id
-
-    @NotNull
     private ExchangeStatus exchangeStatus;//환전 상태
 
     public UpdateExchangeRequestDto(Long exchangeId, ExchangeStatus exchangeStatus) {
-        this.exchangeId = exchangeId;
         this.exchangeStatus = exchangeStatus;
     }
 }
