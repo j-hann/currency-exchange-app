@@ -5,8 +5,6 @@ import com.currency.exchange_app.domain.user.entity.User;
 import com.currency.exchange_app.domain.user.repository.UserRepository;
 import com.currency.exchange_app.global.exception.BadValueException;
 import com.currency.exchange_app.global.exception.ExceptionType;
-import com.currency.exchange_app.global.exception.NotMatchByUserIdException;
-import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
