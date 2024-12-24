@@ -44,8 +44,6 @@
 * 환전 요청 상태 수정
 
 
-
-
 ## ⚙️ ERD
 <details>
 <summary>ERD</summary>
