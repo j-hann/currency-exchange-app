@@ -70,4 +70,5 @@ public class Exchange extends BaseEntity {
     public void updateExchange(ExchangeStatus exchangeStatus) {
         this.exchangeStatus = exchangeStatus;
     }
+
 }

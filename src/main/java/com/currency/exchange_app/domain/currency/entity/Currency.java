@@ -28,7 +28,6 @@ public class Currency extends BaseEntity {
     @Column(name = "exchange_rate")
     private BigDecimal exchangeRate;//환율
 
-
     //기본 생성자
     public Currency() {
 
@@ -38,5 +37,4 @@ public class Currency extends BaseEntity {
         this.currencyStatus = currencyStatus;
         this.exchangeRate = exchangeRate;
     }
-
 }

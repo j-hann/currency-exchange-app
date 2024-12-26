@@ -4,6 +4,7 @@ import com.currency.exchange_app.domain.base.enums.ExchangeStatus;
 import com.currency.exchange_app.domain.currency.entity.Currency;
 import com.currency.exchange_app.domain.currency.repository.CurrencyRepository;
 import com.currency.exchange_app.domain.exchange.dto.ExchangeResponseDto;
+import com.currency.exchange_app.domain.exchange.dto.ExchangeTotalResponseDto;
 import com.currency.exchange_app.domain.exchange.entity.Exchange;
 import com.currency.exchange_app.domain.exchange.repository.ExchangeRepository;
 import com.currency.exchange_app.domain.user.entity.User;
@@ -23,7 +24,10 @@ public class ExchangeService {
     private final UserRepository userRepository;
     private final CurrencyRepository currencyRepository;
 
-    //환전 요청
+    /**
+     * 사용자 환전 요청 API
+     *
+     */
     public ExchangeResponseDto exchangeCurrency(Long userId, Long currencyId, BigDecimal amountBeforeExchange) {
         //사용자 id 조회
         User findUserById = userRepository.findByIdOrElseThrow(userId);
@@ -45,22 +49,31 @@ public class ExchangeService {
         return ExchangeResponseDto.toDto(saveExchangeCurrency);
     }
 
-    //특정 사용자 환전 요청 리스트
-    public List<ExchangeResponseDto> findAllByExchangeList(Long userId) {
+    /**
+     * 사용자 환전 요청 내역 전체 조회 API
+     *
+     */
+    public List<ExchangeResponseDto> findAllExchangeList(Long userId) {
         return exchangeRepository.findByUserId(userId)
                 .stream()
                 .map(ExchangeResponseDto::toDto).toList();
     }
 
-    //환전 요청 리스트
-    public List<ExchangeResponseDto> findAllExchangeList() {
-        return exchangeRepository.findAll()
-                .stream()
-                .map(ExchangeResponseDto::toDto).toList();
+    /**
+     * 사용자 환전 요청 내역 그룹 조회 API
+     * - 총 환전 횟수, 총 환전 요청한 금액
+     */
+    public ExchangeTotalResponseDto findAllExchangeTotalAmount(Long userId) {
+
+        ExchangeTotalResponseDto exchangeTotalResponseDto = exchangeRepository.findByIdExchangeTotalAmount(userId);
+
+        return exchangeTotalResponseDto;
     }
 
-
-    //환전 요청 상태 수정 (환전 요청 취소)
+    /**
+     * 환전 요청 상태 수정 API
+     * - 환전 요청 취소 CANCELLED
+     */
     public ExchangeResponseDto updateExchange(Long exchangeId, ExchangeStatus exchangeStatus) {
 
         //환전 요청 id null값 확인
@@ -80,4 +93,5 @@ public class ExchangeService {
         return ExchangeResponseDto.toDto(updateExchange);
 
     }
+
 }
