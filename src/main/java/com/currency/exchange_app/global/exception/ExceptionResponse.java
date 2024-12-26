@@ -2,7 +2,6 @@ package com.currency.exchange_app.global.exception;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
-
 import java.util.Map;
 
 @Getter

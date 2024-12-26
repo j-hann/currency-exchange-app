@@ -1,6 +1,5 @@
 package com.currency.exchange_app.domain.exchange.dto;
 
-
 import com.currency.exchange_app.domain.base.enums.ExchangeStatus;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

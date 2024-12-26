@@ -1,11 +1,8 @@
 package com.currency.exchange_app.domain.user.dto;
 
-import com.currency.exchange_app.domain.exchange.entity.Exchange;
 import com.currency.exchange_app.domain.user.entity.User;
-import lombok.Getter;
-
 import java.time.LocalDateTime;
-import java.util.List;
+import lombok.Getter;
 
 @Getter
 public class UserResponseDto {

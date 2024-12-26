@@ -1,12 +1,10 @@
 package com.currency.exchange_app.domain.exchange.repository;
 
 import com.currency.exchange_app.domain.exchange.entity.Exchange;
-
 import com.currency.exchange_app.global.exception.BusinessException;
 import com.currency.exchange_app.global.exception.ExceptionType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 
