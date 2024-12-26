@@ -51,7 +51,7 @@ public class GlobalExceptionHandler {
     }
 
     //비지니스 로직 예외처리
-    @ExceptionHandler({BusinessException.class, NotFoundByIdException.class, BadValueException.class})
+    @ExceptionHandler(BusinessException.class)
     public ResponseEntity<ExceptionResponse> handleBusinessException(BusinessException ex) {
         ExceptionType exceptionType = ex.getExceptionType();
 

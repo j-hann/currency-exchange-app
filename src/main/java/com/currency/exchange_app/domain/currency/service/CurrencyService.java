@@ -4,13 +4,14 @@ import com.currency.exchange_app.domain.base.enums.CurrencyStatus;
 import com.currency.exchange_app.domain.currency.dto.CurrencyResponseDto;
 import com.currency.exchange_app.domain.currency.entity.Currency;
 import com.currency.exchange_app.domain.currency.repository.CurrencyRepository;
-import com.currency.exchange_app.domain.user.entity.User;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class CurrencyService {
@@ -19,7 +20,6 @@ public class CurrencyService {
 
     //달러 통화 생성
     public CurrencyResponseDto create(CurrencyStatus currencyStatus, BigDecimal exchangeRate) {
-
         //통화 생성
         Currency currency = new Currency(currencyStatus, exchangeRate);
 

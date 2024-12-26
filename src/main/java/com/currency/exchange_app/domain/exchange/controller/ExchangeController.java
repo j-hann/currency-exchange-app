@@ -30,7 +30,7 @@ public class ExchangeController {
     private final ExchangeService exchangeService;
 
     //환전 요청
-    @PostMapping("users/{userId}/exchanges/create")
+    @PostMapping("users/{userId}/exchanges")
     public ResponseEntity<ExchangeResponseDto> exchangeCurrency(@PathVariable Long userId, @Valid @RequestBody ExchangeRequestDto requestDto) throws IOException {
         ExchangeResponseDto exchangeResponseDto = exchangeService.exchangeCurrency(
                 userId,

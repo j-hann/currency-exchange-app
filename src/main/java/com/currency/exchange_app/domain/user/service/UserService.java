@@ -3,7 +3,7 @@ package com.currency.exchange_app.domain.user.service;
 import com.currency.exchange_app.domain.user.dto.UserResponseDto;
 import com.currency.exchange_app.domain.user.entity.User;
 import com.currency.exchange_app.domain.user.repository.UserRepository;
-import com.currency.exchange_app.global.exception.BadValueException;
+import com.currency.exchange_app.global.exception.BusinessException;
 import com.currency.exchange_app.global.exception.ExceptionType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ public class UserService {
     public UserResponseDto signUp(String email, String name) throws IOException {
         //이메일 존재 여부 확인
         if(userRepository.existsByEmail(email)){
-            throw new BadValueException(ExceptionType.EXIST_USER);
+            throw new BusinessException(ExceptionType.EXIST_USER);
         }
 
         // 유저 생성
@@ -38,7 +38,8 @@ public class UserService {
 
         //이메일 일치 여부 확인
         if(!userRepository.existsByEmail(email)){
-            throw new BadValueException(ExceptionType.EMAIL_NOT_MATCH);
+            throw new BusinessException(ExceptionType.EMAIL_NOT_MATCH) {
+            };
         }
 
         //사용자 삭제
