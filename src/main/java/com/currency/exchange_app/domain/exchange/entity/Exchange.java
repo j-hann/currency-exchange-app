@@ -1,6 +1,5 @@
 package com.currency.exchange_app.domain.exchange.entity;
 
-
 import com.currency.exchange_app.domain.base.entity.BaseEntity;
 import com.currency.exchange_app.domain.base.enums.ExchangeStatus;
 import com.currency.exchange_app.domain.currency.entity.Currency;
@@ -71,4 +70,5 @@ public class Exchange extends BaseEntity {
     public void updateExchange(ExchangeStatus exchangeStatus) {
         this.exchangeStatus = exchangeStatus;
     }
+
 }

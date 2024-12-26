@@ -1,10 +1,8 @@
 package com.currency.exchange_app.domain.currency.dto;
 
 import com.currency.exchange_app.domain.base.enums.CurrencyStatus;
-import com.currency.exchange_app.domain.base.enums.ExchangeStatus;
 import com.currency.exchange_app.domain.currency.entity.Currency;
 import lombok.Getter;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 

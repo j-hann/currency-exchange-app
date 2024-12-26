@@ -1,9 +1,7 @@
 package com.currency.exchange_app.domain.exchange.dto;
 
-
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
-
 import java.math.BigDecimal;
 
 @Getter

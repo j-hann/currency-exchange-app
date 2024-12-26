@@ -3,11 +3,9 @@ package com.currency.exchange_app.domain.user.controller;
 import com.currency.exchange_app.domain.user.dto.DeleteUserRequestDto;
 import com.currency.exchange_app.domain.user.dto.UserRequestDto;
 import com.currency.exchange_app.domain.user.dto.UserResponseDto;
-import com.currency.exchange_app.domain.user.entity.User;
 import com.currency.exchange_app.domain.user.service.UserService;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import java.io.IOException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,11 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
-import java.io.IOException;
-
 @RestController
-@RequestMapping ("/users")
+@RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
     private  final UserService userService;
