@@ -46,11 +46,6 @@
 * 수정 2
 * 수정
 
-
-* 수정 2
-
-
-
 ## ⚙️ ERD
 <details>
 <summary>ERD</summary>

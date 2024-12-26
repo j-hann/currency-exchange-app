@@ -3,6 +3,10 @@ package com.currency.exchange_app.global.exception;
 import lombok.Getter;
 
 @Getter
-public abstract class BusinessException extends RuntimeException {
-    private ExceptionType exceptionType;
+public class BusinessException extends RuntimeException {
+    private final ExceptionType exceptionType;
+
+	public BusinessException(ExceptionType exceptionType) {
+		this.exceptionType = exceptionType;
+	}
 }

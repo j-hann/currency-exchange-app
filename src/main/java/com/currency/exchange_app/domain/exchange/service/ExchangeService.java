@@ -8,8 +8,8 @@ import com.currency.exchange_app.domain.exchange.entity.Exchange;
 import com.currency.exchange_app.domain.exchange.repository.ExchangeRepository;
 import com.currency.exchange_app.domain.user.entity.User;
 import com.currency.exchange_app.domain.user.repository.UserRepository;
+import com.currency.exchange_app.global.exception.BusinessException;
 import com.currency.exchange_app.global.exception.ExceptionType;
-import com.currency.exchange_app.global.exception.NotFoundByIdException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -66,7 +66,7 @@ public class ExchangeService {
 
         //환전 요청 id null값 확인
         if (exchangeId == null) {
-            throw new NotFoundByIdException(ExceptionType.EXCHANGE_NOT_FOUND);
+            throw new BusinessException(ExceptionType.EXCHANGE_NOT_FOUND);
         }
 
         //환전 요청 id 조회
