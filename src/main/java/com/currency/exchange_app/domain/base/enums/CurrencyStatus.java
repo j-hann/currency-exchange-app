@@ -4,9 +4,10 @@ import lombok.Getter;
 
 @Getter
 public enum CurrencyStatus {
-        KRW("KRW", "한화", "₩"),
+//        KRW("KRW", "한화", "₩"),
         USD("USD", "달러", "$"),
-        JPY("JPW", "엔화", "¥");
+        JPY("JPY", "엔화", "円"),
+        CNY("CNY", "위안", "元");
 
         private final String code;//통화 코드
         private final String name;//통화 코드 이름
