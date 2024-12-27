@@ -1,5 +1,6 @@
 package com.currency.exchange_app.domain.exchange.service;
 
+import com.currency.exchange_app.domain.base.enums.CurrencyStatus;
 import com.currency.exchange_app.domain.base.enums.ExchangeStatus;
 import com.currency.exchange_app.domain.currency.entity.Currency;
 import com.currency.exchange_app.domain.currency.repository.CurrencyRepository;
@@ -31,23 +32,52 @@ public class ExchangeService {
     public ExchangeResponseDto exchangeCurrency(Long userId, Long currencyId, BigDecimal amountBeforeExchange) {
         //사용자 id 조회
         User findUserById = userRepository.findByIdOrElseThrow(userId);
-
         //통화 id 조회
-        Currency findCurrencyById = currencyRepository.findCurrencyByIdOrElseThrow(currencyId);
+        Currency currency = currencyRepository.findCurrencyByIdOrElseThrow(currencyId);
 
         //환율
-        BigDecimal exchangeRate = findCurrencyById.getExchangeRate();
+        BigDecimal exchangeRate = currency.getExchangeRate();
         //환전 후 금액
-        BigDecimal amountAfterExchange = amountBeforeExchange.divide(exchangeRate, 2, RoundingMode.HALF_UP);//소수점 두번째 반올림 수행
+        BigDecimal amountAfterExchange = amountAfterExchangeCurrency(currency.getCurrencyStatus(), exchangeRate, amountBeforeExchange);
 
         //상태 NORMAL
-        Exchange exchange = new Exchange(findUserById, findCurrencyById, amountBeforeExchange, amountAfterExchange, ExchangeStatus.NORMAL);
-
+        Exchange exchange = new Exchange(findUserById, currency, amountBeforeExchange, amountAfterExchange, ExchangeStatus.NORMAL);
         //저장
         Exchange saveExchangeCurrency = exchangeRepository.save(exchange);
 
         return ExchangeResponseDto.toDto(saveExchangeCurrency);
     }
+
+    /**
+     * 환전 소수점 계산
+     */
+    public BigDecimal amountAfterExchangeCurrency( CurrencyStatus currencyStatus, BigDecimal exchangeRate, BigDecimal amountBeforeExchange) {
+
+        switch (currencyStatus){
+            case USD:
+                return amountBeforeExchange.divide(exchangeRate, 2, RoundingMode.HALF_UP);//소수점 두번째 반올림
+
+            case JPY :
+                return amountBeforeExchange.divide(exchangeRate, RoundingMode.DOWN);//내림
+
+            case CNY :
+                return amountBeforeExchange.divide(exchangeRate, 2, RoundingMode.FLOOR);//소수점 두번째 이하 버리기
+
+			default :
+                throw new BusinessException(ExceptionType.WRONG_EXCHANGE_RATE);
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
 
     /**
      * 사용자 환전 요청 내역 전체 조회 API
