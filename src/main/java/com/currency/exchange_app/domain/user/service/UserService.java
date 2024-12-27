@@ -15,7 +15,10 @@ import java.io.IOException;
 public class UserService {
     private final UserRepository userRepository;
 
-    //사용자 생성
+    /**
+     * 사용자 회원가입 API
+     *
+     */
     public UserResponseDto signUp(String email, String name) throws IOException {
         //이메일 존재 여부 확인
         if(userRepository.existsByEmail(email)){
@@ -30,9 +33,11 @@ public class UserService {
         return UserResponseDto.toDto(savedUser);
     }
 
-    //사용자 삭제
+    /**
+     * 사용자 회원탈퇴 API
+     *
+     */
     public void delete(Long id, String email) {
-
         //사용자 id 조회
         User findUserById = userRepository.findByIdOrElseThrow(id);
 

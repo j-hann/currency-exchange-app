@@ -22,8 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     private  final UserService userService;
 
-    
-    //사용자 생성
+
+    /**
+     * 사용자 회원가입 API
+     *
+     */
     @PostMapping("/signup")
     public ResponseEntity<UserResponseDto> signUp(@Valid @RequestBody UserRequestDto requestDto) throws IOException {
         UserResponseDto userResponseDto = userService.signUp(
@@ -34,7 +37,10 @@ public class UserController {
         return new ResponseEntity<>(userResponseDto, HttpStatus.CREATED);
     }
 
-    //사용자 삭제
+    /**
+     * 사용자 회원탈퇴 API
+     *
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> userDelete(@PathVariable Long id,
                                            @Valid @RequestBody DeleteUserRequestDto requestDto) {

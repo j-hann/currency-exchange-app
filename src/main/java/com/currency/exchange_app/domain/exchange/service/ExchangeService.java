@@ -69,16 +69,6 @@ public class ExchangeService {
 
     }
 
-
-
-
-
-
-
-
-
-
-
     /**
      * 사용자 환전 요청 내역 전체 조회 API
      *

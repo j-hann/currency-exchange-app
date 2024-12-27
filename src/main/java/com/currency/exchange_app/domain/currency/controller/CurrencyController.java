@@ -24,7 +24,10 @@ public class CurrencyController {
 
     private final CurrencyService currencyService;
 
-    //통화 생성
+    /**
+     * 통화 생성 API
+     * - 달러, 엔화, 위안
+     */
     @PostMapping("/create")
     public ResponseEntity<CurrencyResponseDto> create(@Valid @RequestBody CurrencyRequestDto requestDto) throws IOException {
         CurrencyResponseDto currencyResponseDto = currencyService.create(
@@ -34,8 +37,11 @@ public class CurrencyController {
 
         return new ResponseEntity<>(currencyResponseDto, HttpStatus.CREATED);
     }
-    
-    //통화 전체 리스트 조회
+
+    /**
+     * 통화 전체 리스트 조회 API
+     * - 달러, 엔화, 위안
+     */
     @GetMapping
     public ResponseEntity<List<CurrencyResponseDto>> findAllCurrencyList() {
 
@@ -45,7 +51,10 @@ public class CurrencyController {
         return  new ResponseEntity<>(currencyResponseDtoList, HttpStatus.OK);
     }
 
-    //통화 삭제
+    /**
+     * 통화 삭제 API
+     * - 달러, 엔화, 위안
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
 
